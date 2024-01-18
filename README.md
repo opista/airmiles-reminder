@@ -19,7 +19,7 @@
 
 ## Installing
 
-1. Check if your `Node.js` version is >= **14**.
+1. Check if your `Node.js` version is >= **20**.
    Change or configure the name of your extension on `src/manifest`.
 2. Run `yarn install` to install the dependencies.
 
