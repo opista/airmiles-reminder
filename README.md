@@ -55,6 +55,11 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.4.0] - 2024-03-07
+
+-   Introduces better API
+-   Cleans up code
+
 ## [1.3.0] - 2024-01-07
 
 -   Improves domain identification

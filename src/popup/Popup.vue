@@ -6,8 +6,7 @@ const retailers = ref<Retailer[]>([])
 const searchInput = ref<HTMLInputElement | null>(null)
 const searchTerm = ref<string>("")
 
-const sortedRetailers = computed(() => retailers.value.sort((a, b) => a.merchant.slug.localeCompare(b.merchant.slug)))
-const filteredRetailers = computed(() => searchTerm.value ? sortedRetailers.value.filter(({ merchant_url }) => merchant_url.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase())) : sortedRetailers.value)
+const filteredRetailers = computed(() => searchTerm.value ? retailers.value.filter(({ n }) => n.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase())) : retailers.value)
 
 onBeforeMount(() => {
   chrome.storage.local.get('retailer_list', (result) => {
