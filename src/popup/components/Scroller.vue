@@ -10,7 +10,7 @@ const props = withDefaults(defineProps<Props>(), {
   retailers: () => [],
 })
 
-const onClickRetailer = (retailer: Retailer) => chrome.runtime.sendMessage({ type: 'visit_url', url: retailer.su })
+const onClickRetailer = ({ su }: Retailer) => chrome.runtime.sendMessage({ type: 'visit_url', url: su })
 </script>
 
 <template>
