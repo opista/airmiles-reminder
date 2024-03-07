@@ -69,7 +69,7 @@ class AviosReminderPopup extends HTMLElement {
           <p class="body">${isEarning ? `Earning: ${r}` : `Earn: ${r}`}</p>
         </div>
       </div>
-      ${isEarning ? "" : `<a class="button" href="${su}">Apply reward</button>`}
+      <a class="button" href="${su}" ${isEarning ? 'target="_blank"' : ""}>${isEarning ? "More Details" : "Apply reward"}</button>
     `;
 
         container
