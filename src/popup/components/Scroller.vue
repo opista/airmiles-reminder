@@ -10,31 +10,18 @@ const props = withDefaults(defineProps<Props>(), {
   retailers: () => [],
 })
 
-const formatRetailerUrl = (retailer: Retailer) => {
-  try {
-    const url = new URL(retailer.merchant_url);
-    return url.hostname;
-  } catch (err) {
-    return retailer.merchant_url;
-  }
-}
-
-const formatRetailerRate = (retailer: Retailer) => `Up to ${retailer.rate
-  .toLocaleLowerCase()
-  .replace("up to ", "")}`
-
-const onClickRetailer = (retailer: Retailer) => chrome.runtime.sendMessage({ type: 'visit_url', url: retailer.merchant_url })
+const onClickRetailer = ({ su }: Retailer) => chrome.runtime.sendMessage({ type: 'visit_url', url: su })
 </script>
 
 <template>
   <!-- <div class="scroller"> -->
-  <RecycleScroller class="scroller" :items="props.retailers" :item-size="73" key-field="external_id" v-slot="{ item }">
+  <RecycleScroller class="scroller" :items="props.retailers" :item-size="73" key-field="mi" v-slot="{ item }">
     <div class="container">
       <div class="item" @click="onClickRetailer(item)">
         <div class="item-inner">
           <div class="text">
-            <div class="title">{{ formatRetailerUrl(item) }}</div>
-            <div class="rate">{{ formatRetailerRate(item) }}</div>
+            <div class="title">{{ item.n }}</div>
+            <div class="rate">{{ item.r }}</div>
           </div>
           <div class="arrow">
             <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492.004 492.004">

@@ -1,36 +1,38 @@
 /// <reference types="vite/client" />
 
-declare module '*.vue' {
-  import type { DefineComponent } from 'vue'
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
-  const component: DefineComponent<{}, {}, any>
-  export default component
+declare module "*.vue" {
+    import type { DefineComponent } from "vue";
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-types
+    const component: DefineComponent<{}, {}, any>;
+    export default component;
 }
 
 interface createElementOptions {
-  className?: string;
-  href?: string;
-  target?: string;
-  textContent?: string;
-  title?: string;
+    className?: string;
+    href?: string;
+    target?: string;
+    textContent?: string;
+    title?: string;
 }
 
 interface GraphQLResponse {
-  data?: {
-    browser_plugin_merchant?: Retailer[];
-  };
+    data?: {
+        browser_plugin_merchant?: Retailer[];
+    };
 }
 
 interface Retailer {
-  external_id: string;
-  merchant_url: string;
-  rate: string;
-  merchant: {
-    slug: string;
-  };
+    n: string;
+    r: string;
+    s: string;
+    md: string;
+    mi: string;
+    mo: string;
+    su: string;
+    isa: boolean;
 }
 
 interface RetailerStorageItem {
-  retailers: Retailer[];
-  expiry: number;
+    retailers: Retailer[];
+    expiry: number;
 }

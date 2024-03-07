@@ -1,4 +1,4 @@
-// import "@webcomponents/webcomponentsjs";
+import "@webcomponents/webcomponentsjs";
 
 const COOKIE_PREFIX = "avios_reminder";
 const COOKIE_POPUP_CLOSED = `${COOKIE_PREFIX}_popup_closed`;
@@ -38,7 +38,7 @@ class AviosReminderPopup extends HTMLElement {
         }
     }
 
-    setupPopup({ rate, merchant: { slug } }: Retailer) {
+    setupPopup({ r, su }: Retailer) {
         const isEarning = this.isEarning();
 
         const container = document.createElement("div");
@@ -56,11 +56,6 @@ class AviosReminderPopup extends HTMLElement {
       </svg>
     `;
 
-        const formattedRate = rate
-            .toLocaleLowerCase()
-            .replace("up to ", "")
-            .replace("avios", "Avios");
-
         container.innerHTML = `
       <button class="close" title="Close this popup">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12">
@@ -71,16 +66,10 @@ class AviosReminderPopup extends HTMLElement {
         ${isEarning ? checkIcon : bellIcon}
         <div>
           <h1 class="title">${isEarning ? "Avios rewards activated!" : "Avios opportunity!"}</h1>
-          <p class="body">${
-              isEarning ? `Earning up to ${formattedRate}` : `Earn up to ${formattedRate}`
-          }</p>
+          <p class="body">${isEarning ? `Earning: ${r}` : `Earn: ${r}`}</p>
         </div>
       </div>
-      ${
-          isEarning
-              ? ""
-              : `<a class="button" href="${`https://www.shopping.ba.com/retailers/${slug}`}">Apply reward</button>`
-      }
+      ${isEarning ? "" : `<a class="button" href="${su}">Apply reward</button>`}
     `;
 
         container
