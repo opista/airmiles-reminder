@@ -55,6 +55,11 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.5.0] - 2024-03-20
+
+-   Increases retailer cache lifetime to 5 days
+-   Displays multiple deals per website if they exist
+
 ## [1.4.0] - 2024-03-07
 
 -   Introduces better API

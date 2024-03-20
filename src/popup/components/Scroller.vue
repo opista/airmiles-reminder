@@ -42,24 +42,25 @@ const onClickRetailer = ({ su }: Retailer) => chrome.runtime.sendMessage({ type:
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
   border: 1px solid #a9a8a9;
+  scrollbar-gutter: stable;
 }
 
-.scroller::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
 
 /* Track */
-.scroller::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 /* Handle */
-.scroller::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #2a78cd;
 }
 
 /* Handle on hover */
-.scroller::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #5493d7;
 }
 

@@ -1,14 +1,14 @@
 import getRetailerList from "./utils/retailers";
 import { getDomain } from "tldts";
 
-const findAviosRetailer = async (url: string): Promise<Retailer | undefined> => {
+const findAviosRetailers = async (url: string): Promise<Retailer[]> => {
     const pageDomain = getDomain(url);
 
-    if (!pageDomain) return;
+    if (!pageDomain) return [];
 
     const retailers = await getRetailerList();
 
-    return retailers.find(({ md }) => md === pageDomain);
+    return retailers.filter(({ md }) => md === pageDomain);
 };
 
 const getUser = async () => {
@@ -68,12 +68,12 @@ const getTrackingUrl = async (userId: string, merchantId: string) => {
 };
 
 const handleReadUrl = async (url: string, isAlreadyEarning: boolean) => {
-    const retailer = await findAviosRetailer(url);
+    const retailers = await findAviosRetailers(url);
 
     console.log("Checking if URL is active Avios partner");
 
-    if (!retailer) {
-        console.log("Retailer not found", { retailer, url });
+    if (!retailers?.length) {
+        console.log("No retailers found", { retailers, url });
         return {
             isEarning: false,
             result: "success",
@@ -81,18 +81,29 @@ const handleReadUrl = async (url: string, isAlreadyEarning: boolean) => {
         };
     }
 
+    if (retailers?.length > 1) {
+        console.log("Multiple retailers found for URL", retailers);
+        return {
+            isEarning: false,
+            result: "success",
+            retailers,
+        };
+    }
+
+    const [retailer] = retailers;
+
     if (isAlreadyEarning) {
         console.log("Retailer found and already tracked visit", { retailer, url });
         return {
             isEarning: true,
             result: "success",
-            retailer,
+            retailers,
         };
     }
 
     try {
         console.log("Not yet earning Avios for retailer, tracking visit...", {
-            retailer,
+            retailers,
             url,
         });
         const user = await getUser();
@@ -105,14 +116,14 @@ const handleReadUrl = async (url: string, isAlreadyEarning: boolean) => {
         return {
             isEarning: true,
             result: "success",
-            retailer,
+            retailers,
         };
     } catch (err) {
         console.log("Failed to track visit", err);
         return {
             isEarning: false,
             result: "error",
-            retailer,
+            retailers,
         };
     }
 };
