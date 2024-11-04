@@ -55,6 +55,13 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.6.0] - 2024-11-04
+
+-   Introduces "minimised" tab to be less intrusive
+    -   Position of tab is maintained across websites
+    -   Closing a popup will prevent the tab & popup from appearing again on that website until the browser is closed
+-   Resolves bug with [CSP Issue on Chrome 130+](https://github.com/crxjs/chrome-extension-tools/issues/918)
+
 ## [1.5.0] - 2024-03-20
 
 -   Increases retailer cache lifetime to 5 days
