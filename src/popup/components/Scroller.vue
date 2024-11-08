@@ -12,19 +12,16 @@ const props = withDefaults(defineProps<Props>(), {
 
 const onClickRetailer = ({ su }: Retailer) =>
     chrome.runtime.sendMessage({ type: "visit_url", url: su });
+
+const generateRetailerTitle = ({ n, r }: Retailer) => `Shop with ${n} - Earn ${r}`
 </script>
+
 
 <template>
     <!-- <div class="scroller"> -->
-    <RecycleScroller
-        class="scroller"
-        :items="props.retailers"
-        :item-size="73"
-        key-field="mi"
-        v-slot="{ item }"
-    >
+    <RecycleScroller class="scroller" :items="props.retailers" :item-size="73" key-field="mi" v-slot="{ item }">
         <div class="container">
-            <div class="item" @click="onClickRetailer(item)">
+            <div class="item" @click="onClickRetailer(item)" :title="generateRetailerTitle(item)">
                 <div class="item-inner">
                     <img class="image" :src="item.l" />
                     <div class="text">
@@ -91,6 +88,7 @@ const onClickRetailer = ({ su }: Retailer) =>
 
 .text {
     flex: 1;
+    min-width: 0;
 }
 
 .title {
