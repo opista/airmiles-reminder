@@ -55,12 +55,12 @@ const generateRetailerTitle = ({ n, r }: Retailer) => `Shop with ${n} - Earn ${r
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #2a78cd;
+    background: #0032a0;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #5493d7;
+    background: #0032a0;
 }
 
 .item {
@@ -70,7 +70,7 @@ const generateRetailerTitle = ({ n, r }: Retailer) => `Shop with ${n} - Earn ${r
 }
 
 .item:hover {
-    background-color: #e5e5e5;
+    background-color: #d5ddff;
 }
 
 .item-inner {

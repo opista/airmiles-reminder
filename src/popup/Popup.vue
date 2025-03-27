@@ -9,8 +9,8 @@ const searchTerm = ref<string>("");
 const filteredRetailers = computed(() =>
     searchTerm.value
         ? retailers.value.filter(({ n }) =>
-              n.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase()),
-          )
+            n.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase()),
+        )
         : retailers.value,
 );
 
@@ -26,7 +26,7 @@ onMounted(() => {
 
 const visitUrl = (url: string) => chrome.runtime.sendMessage({ type: "visit_url", url });
 
-const onClickBaShopping = () => visitUrl("https://www.shopping.ba.com/");
+const onClickAviosShopping = () => visitUrl("https://www.avios.com/collect-avios/");
 const onClickFaq = () => visitUrl("https://www.opista.com/apps/avios-reminder#faq");
 </script>
 
@@ -36,35 +36,16 @@ const onClickFaq = () => visitUrl("https://www.opista.com/apps/avios-reminder#fa
             <img class="logo" src="/img/logo-128.png" alt="test" />
             <h1>Avios Reminder</h1>
         </div>
-        <input
-            type="text"
-            v-model="searchTerm"
-            placeholder="Search for a retailer"
-            ref="searchInput"
-        />
+        <input type="text" v-model="searchTerm" placeholder="Search for a retailer" ref="searchInput" />
         <Scroller :retailers="filteredRetailers" />
         <div class="footer">
-            <button
-                class="button button-ba"
-                title="Visit the BA Shopping website"
-                @click="onClickBaShopping"
-            >
-                BA Shopping
+            <button class="button button-avios" title="Visit the Avios website" @click="onClickAviosShopping">
+                Avios website
             </button>
-            <button
-                class="button button-faq"
-                title="Frequently Asked Questions"
-                @click="onClickFaq"
-            >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 10a3 3 0 1 1 3 3v1m-7 7h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z"
-                    />
-                    <circle cx="12" cy="17" r="1" fill="currentColor" />
+            <button class="button button-faq" title="Frequently Asked Questions" @click="onClickFaq">
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 52 52">
+                    <path fill="currentColor"
+                        d="M26.7 42.8c.8 0 1.5.7 1.5 1.5v3.2c0 .8-.7 1.5-1.5 1.5h-3.2c-.8 0-1.5-.7-1.5-1.5v-3.2c0-.8.7-1.5 1.5-1.5h3.2zM28.2 35.1c0-2.1 1.3-4 3.1-4.8h.1c5.2-2.1 8.8-7.2 8.8-13.2 0-7.8-6.4-14.2-14.2-14.2-7.2 0-13.2 5.3-14.2 12.2v.1c-.1.9.6 1.6 1.5 1.6h3.2c.8 0 1.4-.5 1.5-1.1v-.2c.7-3.7 4-6.5 7.9-6.5 4.5 0 8.1 3.6 8.1 8.1 0 2.1-.8 4-2.1 5.5l-.1.1c-.9 1-2.1 1.6-3.3 2-4 1.4-6.7 5.2-6.7 9.4v1.5c0 .8.6 1.4 1.4 1.4h3.2c.8 0 1.6-.6 1.6-1.5l.2-.4z" />
                 </svg>
             </button>
         </div>
@@ -134,30 +115,32 @@ input {
     text-decoration: none;
 }
 
-.button-ba {
+.button-avios {
     margin-right: 8px;
     color: #fff;
-    background: #2a78cd;
+    background: #0032a0;
 }
 
-.button-ba:hover {
-    background-color: #5493d7;
+.button-avios:hover {
+    background-color: #001989;
 }
 
 .button-faq {
-    padding: 4px;
-    color: #fff;
-    background-color: #bb5ce3;
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    color: #0032a0;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #0032a0;
 }
 
 .button-faq svg {
     display: block;
-    width: 24px;
-    height: 24px;
 }
 
 .button-faq:hover {
-    background-color: #d285f3;
+    background-color: #d5ddff;
 }
 
 .container {

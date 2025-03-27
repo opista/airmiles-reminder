@@ -19,10 +19,7 @@ const getUser = async () => {
         return user;
     }
 
-    const userId = await Promise.any([
-        getUserId("www.shopping.ba.com"),
-        getUserId("shopping.ba.com"),
-    ]);
+    const userId = await getUserId();
 
     user = { id: userId };
 
@@ -31,8 +28,8 @@ const getUser = async () => {
     return user;
 };
 
-const getUserId = async (domain: string) => {
-    const url = `https://${domain}/retailers/bookingcom-uk`;
+const getUserId = async () => {
+    const url = `https://www.avios.com/collect-avios/shopping/retailers/bookingcom-uk/`;
     const html = await (await fetch(url)).text();
     const userId = html.match(/"collinsonId":"(\d+)"/)?.[1];
 
@@ -44,7 +41,7 @@ const getUserId = async (domain: string) => {
 };
 
 const getTrackingUrl = async (userId: string, merchantId: string) => {
-    const url = `https://shopping.ba.com/api/partner-click?membershipId=${userId}&merchantId=${merchantId}`;
+    const url = `https://www.avios.com/collect-avios/shopping/api/partner-click/?membershipId=${userId}&merchantId=${merchantId}`;
 
     let response = await fetch(url);
 

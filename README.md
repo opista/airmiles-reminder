@@ -55,6 +55,11 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.6.1] - 2025-03-27
+
+-   Migrates from BA URLs to Avios
+-   Small styling tweaks
+
 ## [1.6.0] - 2024-11-04
 
 -   Introduces "minimised" tab to be less intrusive
