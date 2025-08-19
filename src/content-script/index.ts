@@ -1,9 +1,9 @@
 import "@webcomponents/webcomponentsjs";
 
-const COOKIE_PREFIX = "avios_reminder";
+const COOKIE_PREFIX = "airmiles_reminder_reminder";
 const COOKIE_POPUP_POSITION = `${COOKIE_PREFIX}_popup_position`;
 const COOKIE_POPUP_CLOSED = `${COOKIE_PREFIX}_popup_closed`;
-const COOKIE_EARNING_AVIOS = `${COOKIE_PREFIX}_retailer_earning`;
+const COOKIE_EARNING_AIRMILES = `${COOKIE_PREFIX}_retailer_earning`;
 const COOKIE_RETAILER_NOT_SUPPORTED = `${COOKIE_PREFIX}_retailer_not_supported`;
 
 const setCookie = (key: string, expiry?: number) =>
@@ -250,7 +250,7 @@ const popupStyles = `
 }
 `;
 
-class AviosReminderPopup extends HTMLElement {
+class AirmilesReminderPopup extends HTMLElement {
     private container?: HTMLDivElement;
     private retailers: Retailer[] = [];
 
@@ -410,7 +410,7 @@ class AviosReminderPopup extends HTMLElement {
               ${isEarning ? this.checkIcon : this.bellIcon}
             </span>
             <div>
-              <h1 class="title">${isEarning ? "Avios rewards activated!" : "Avios opportunity!"}</h1>
+              <h1 class="title">${isEarning ? "Rewards activated!" : "Rewards opportunity!"}</h1>
               <p class="body">${isEarning ? `Earning: ${r}` : `Earn: ${r}`}</p>
             </div>
           </div>
@@ -441,7 +441,7 @@ class AviosReminderPopup extends HTMLElement {
               ${this.bellIcon}
             </span>
             <div>
-              <h1 class="title">${this.retailers.length} Avios opportunities!</h1>
+              <h1 class="title">${this.retailers.length} earning opportunities!</h1>
             </div>
           </div>
           <div class="retailer-list hidden">
@@ -543,7 +543,7 @@ class AviosReminderPopup extends HTMLElement {
     if (isCookieSet(COOKIE_POPUP_CLOSED)) return;
     if (isCookieSet(COOKIE_RETAILER_NOT_SUPPORTED)) return;
 
-    const isAlreadyEarning = isCookieSet(COOKIE_EARNING_AVIOS);
+    const isAlreadyEarning = isCookieSet(COOKIE_EARNING_AIRMILES);
 
     const { isEarning, retailers } = await chrome.runtime.sendMessage({
         isAlreadyEarning,
@@ -552,15 +552,15 @@ class AviosReminderPopup extends HTMLElement {
     });
 
     if (!isAlreadyEarning && isEarning) {
-        setCookie(COOKIE_EARNING_AVIOS, 432000 /* 5 days */);
+        setCookie(COOKIE_EARNING_AIRMILES, 432000 /* 5 days */);
     }
 
     if (!retailers?.length) {
         setCookie(COOKIE_RETAILER_NOT_SUPPORTED, 86400 /* 24 hours */);
     }
 
-    customElements.define("avios-reminder-popup", AviosReminderPopup);
-    const webComponent = document.createElement("avios-reminder-popup");
+    customElements.define("airmiles-reminder-popup", AirmilesReminderPopup);
+    const webComponent = document.createElement("airmiles-reminder-popup");
     webComponent.setAttribute("is-earning", isEarning);
     webComponent.setAttribute("retailers", JSON.stringify(retailers));
     document.body.appendChild(webComponent);

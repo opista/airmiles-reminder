@@ -1,4 +1,6 @@
-# Avios Reminder
+# Airmiles Reminder
+
+<ins>**Note: This extension is not affiliated with British Airways or Avios.**</ins>
 
 > A Chrome Extension to notify you when you're on a site that can reward you with Avios for your purchase
 
@@ -28,7 +30,7 @@
 run the command
 
 ```shell
-$ cd avios-reminder
+$ cd airmiles-reminder
 
 $ yarn dev
 ```
@@ -36,7 +38,7 @@ $ yarn dev
 ### Chrome Extension Developer Mode
 
 1. set your Chrome browser 'Developer mode' up
-2. click 'Load unpacked', and select `avios-reminder/build` folder
+2. click 'Load unpacked', and select `airmiles-reminder/build` folder
    Normal FrontEnd Developer Mode
 
 3. access `http://0.0.0.0:3000/`when debugging the popup page, open `http://0.0.0.0:3000//popup.html`when debugging the options page, open `http://0.0.0.0:3000//options.html`
@@ -55,9 +57,13 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.6.2] - 2025-08-19
+
+-   Removes any branding that could cause confusion over ownership or affiliation as requested
+
 ## [1.6.1] - 2025-03-27
 
--   Migrates from BA URLs to Avios
+-   Migrates from BA URLs
 -   Small styling tweaks
 
 ## [1.6.0] - 2024-11-04

@@ -1,7 +1,7 @@
 import getRetailerList from "./utils/retailers";
 import { getDomain } from "tldts";
 
-const findAviosRetailers = async (url: string): Promise<Retailer[]> => {
+const findRetailers = async (url: string): Promise<Retailer[]> => {
     const pageDomain = getDomain(url);
 
     if (!pageDomain) return [];
@@ -65,9 +65,9 @@ const getTrackingUrl = async (userId: string, merchantId: string) => {
 };
 
 const handleReadUrl = async (url: string, isAlreadyEarning: boolean) => {
-    const retailers = await findAviosRetailers(url);
+    const retailers = await findRetailers(url);
 
-    console.log("Checking if URL is active Avios partner");
+    console.log("Checking if URL is an active partner");
 
     if (!retailers?.length) {
         console.log("No retailers found", { retailers, url });
@@ -99,7 +99,7 @@ const handleReadUrl = async (url: string, isAlreadyEarning: boolean) => {
     }
 
     try {
-        console.log("Not yet earning Avios for retailer, tracking visit...", {
+        console.log("Not yet earning airmiles for retailer, tracking visit...", {
             retailers,
             url,
         });

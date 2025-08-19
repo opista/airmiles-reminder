@@ -26,22 +26,18 @@ onMounted(() => {
 
 const visitUrl = (url: string) => chrome.runtime.sendMessage({ type: "visit_url", url });
 
-const onClickAviosShopping = () => visitUrl("https://www.avios.com/collect-avios/");
-const onClickFaq = () => visitUrl("https://www.opista.com/apps/avios-reminder#faq");
+const onClickFaq = () => visitUrl("https://www.opista.com/apps/airmiles-reminder#faq");
 </script>
 
 <template>
     <div class="container">
         <div class="header">
             <img class="logo" src="/img/logo-128.png" alt="test" />
-            <h1>Avios Reminder</h1>
+            <h1>Airmiles Reminder</h1>
         </div>
         <input type="text" v-model="searchTerm" placeholder="Search for a retailer" ref="searchInput" />
         <Scroller :retailers="filteredRetailers" />
         <div class="footer">
-            <button class="button button-avios" title="Visit the Avios website" @click="onClickAviosShopping">
-                Avios website
-            </button>
             <button class="button button-faq" title="Frequently Asked Questions" @click="onClickFaq">
                 <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 52 52">
                     <path fill="currentColor"
@@ -85,7 +81,7 @@ h1 {
 .footer {
     margin-top: 16px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -113,16 +109,6 @@ input {
     padding: 8px 12px;
     text-align: center;
     text-decoration: none;
-}
-
-.button-avios {
-    margin-right: 8px;
-    color: #fff;
-    background: #0032a0;
-}
-
-.button-avios:hover {
-    background-color: #001989;
 }
 
 .button-faq {
