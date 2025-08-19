@@ -1,8 +1,10 @@
 const fetchRetailers = async (): Promise<Retailer[]> => {
     try {
-        const response = await fetch(
-            "https://api.jsonsilo.com/public/1eacce4a-40da-4bff-a9d0-046e28ad6d86",
-        );
+        const response = await fetch("https://avios-partners-worker.elegant-spot9791.workers.dev", {
+            headers: {
+                "X-Runtime-ID": chrome.runtime.id,
+            },
+        });
         const data = await response.json();
         return data || null;
     } catch (err) {
