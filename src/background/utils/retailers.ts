@@ -1,8 +1,8 @@
 const fetchRetailers = async (): Promise<Retailer[]> => {
     try {
-        const response = await fetch("https://avios-partners-worker.elegant-spot9791.workers.dev", {
+        const response = await fetch("https://airmiles.opista.com/api/partners", {
             headers: {
-                "X-Runtime-ID": chrome.runtime.id,
+                "x-runtime-id": chrome.runtime.id,
             },
         });
         const data = await response.json();
