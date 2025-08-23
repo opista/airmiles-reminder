@@ -1,6 +1,6 @@
 import "@webcomponents/webcomponentsjs";
 
-const COOKIE_PREFIX = "airmiles_reminder_reminder";
+const COOKIE_PREFIX = "airmiles_reminder";
 const COOKIE_POPUP_POSITION = `${COOKIE_PREFIX}_popup_position`;
 const COOKIE_POPUP_CLOSED = `${COOKIE_PREFIX}_popup_closed`;
 const COOKIE_EARNING_AIRMILES = `${COOKIE_PREFIX}_retailer_earning`;
@@ -441,7 +441,7 @@ class AirmilesReminderPopup extends HTMLElement {
               ${this.bellIcon}
             </span>
             <div>
-              <h1 class="title">${this.retailers.length} earning opportunities!</h1>
+              <h1 class="title">${this.retailers.length} Avios opportunities!</h1>
             </div>
           </div>
           <div class="retailer-list hidden">

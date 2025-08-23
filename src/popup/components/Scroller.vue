@@ -64,6 +64,7 @@ const generateRetailerTitle = ({ n, r }: Retailer) => `Shop with ${n} - Earn ${r
 }
 
 .item {
+    cursor: pointer;
     padding: 4px 12px;
     border-bottom: 1px solid #a1a1a1;
     box-sizing: border-box;
@@ -75,7 +76,6 @@ const generateRetailerTitle = ({ n, r }: Retailer) => `Shop with ${n} - Earn ${r
 
 .item-inner {
     align-items: center;
-    cursor: pointer;
     display: flex;
     justify-content: space-between;
     padding: 8px 4px;
