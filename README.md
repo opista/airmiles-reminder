@@ -57,6 +57,10 @@ Now, the content of the `build` folder will be the extension ready to be submitt
 
 ## Changelog
 
+## [1.6.3] - 2025-08-25
+
+-   Various fixes
+
 ## [1.6.2] - 2025-08-19
 
 -   Removes any branding that could cause confusion over ownership or affiliation as requested
